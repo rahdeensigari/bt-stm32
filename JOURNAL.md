@@ -1,4 +1,4 @@
-# August 8 - Start
+<img width="358" height="300" alt="image" src="https://github.com/user-attachments/assets/8abeb83a-9d78-4a96-ba1b-9242dd561223" /># August 8 - Start
 
 This is mainly going to serve as a practice exercise for creating 4-layer pcbs. As mentioned in the README, I'm following along with [this](https://www.youtube.com/watch?v=nkHFoxe0mrU) tutorial to create the base board (that's why this is marked as T4 on forge) but I will make some changes to the design as I see fit, and will try to do the majority of steps myself. This board is going to use the STM32WB55CEU6 MCU to allow for Bluetooth communication. I'm also going to be using KiCAD to actually create the schematic and design the PCB. With that out of the way, I'm going to jump straight into designing this. First, I imported the MCU symbol in KiCAD:
 
@@ -21,3 +21,48 @@ Then, I added the crystal oscillators. This MCU is kind of weird in that it requ
 <img width="551" height="651" alt="image" src="https://github.com/user-attachments/assets/5a7f3071-c87d-4895-8d33-37aa03def775" />
 
 **Total Time Spent: 1 Hour**
+
+# August 14 - RF Hardware
+
+Next up is the RF hardware. This is pretty new to me so I'm going to rely pretty heavily on the tutorial. STM's official application notes (AN5165) say to setup the RF hardware like this:
+
+<img width="1092" height="360" alt="image" src="https://github.com/user-attachments/assets/fa55a09f-4df9-46d4-a6da-0a8dc52912e4" />
+
+Using that as a reference, I first setup the matching network. This basically uses pi-network impedance matching to keep the impedance equal on both sides, preventing signal reflection.
+
+<img width="401" height="434" alt="image" src="https://github.com/user-attachments/assets/6788a9b1-da3b-4442-87cc-e79048233942" />
+
+Next, I added a low pass filter. The specific model that the application note suggests is DLF162500LT-5028A1, which didn't have a schematic and footprint available, meaning I had to make my own:
+
+<img width="359" height="314" alt="image" src="https://github.com/user-attachments/assets/93c18ef5-f478-4491-84a6-3016f75c449d" />
+<img width="797" height="475" alt="image" src="https://github.com/user-attachments/assets/3d3e5329-d946-483f-83ba-e22d91151408" />
+
+Then I added a coaxial connector symbol for the UFL connector.
+ 
+<img width="358" height="300" alt="image" src="https://github.com/user-attachments/assets/04421b2b-a87d-4000-9cca-ecf0f92e6897" />
+
+Next I broke out the SWD pins for debugging as well as the reset pin in STM32CubeMX:
+
+<img width="1028" height="1041" alt="image" src="https://github.com/user-attachments/assets/0bc9e309-c6f3-4cd6-86b5-65fb2723d850" />
+
+Then I added it into the schematic. I'm using a 6 pin connector while the video uses something called a tag-connect, but tag-connect wires are expensive so I'm just going to stick with a simple connector.
+
+<img width="570" height="721" alt="image" src="https://github.com/user-attachments/assets/7fa0f311-69f1-475f-905c-ae6046860da1" />
+
+Added boot:
+
+<img width="519" height="384" alt="image" src="https://github.com/user-attachments/assets/feaa4e29-ea03-4a2c-939f-9ffb1e854e43" />
+
+Next I added USB-C, this is pretty standard but I also added an ESD protector, which is not something I've actually done in the past:
+
+<img width="698" height="718" alt="image" src="https://github.com/user-attachments/assets/f143c28c-a458-4afd-868e-d9ce03329f76" />
+
+To find a good LDO voltage regulator, I used STM32CubeMX to find the current requirements for the MCU.
+
+<img width="343" height="26" alt="image" src="https://github.com/user-attachments/assets/1a84c387-745d-43e1-8f38-6b65aa1da9f3" />
+
+Since it is so low, I can get away with using an LDO voltage regulator. The specific one I'm using is the MIC5365-3.3YD5. I'm using 4.7uF caps to shorten the BOM.
+
+<img width="535" height="318" alt="image" src="https://github.com/user-attachments/assets/8d33a1dd-dbbb-4a20-be26-3d3cc77b8c92" />
+
+**Total Time Spent: 1.97 Hours**
