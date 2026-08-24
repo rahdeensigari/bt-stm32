@@ -1,4 +1,4 @@
-<img width="358" height="300" alt="image" src="https://github.com/user-attachments/assets/8abeb83a-9d78-4a96-ba1b-9242dd561223" /># August 8 - Start
+# August 8 - Start
 
 This is mainly going to serve as a practice exercise for creating 4-layer pcbs. As mentioned in the README, I'm following along with [this](https://www.youtube.com/watch?v=nkHFoxe0mrU) tutorial to create the base board (that's why this is marked as T4 on forge) but I will make some changes to the design as I see fit, and will try to do the majority of steps myself. This board is going to use the STM32WB55CEU6 MCU to allow for Bluetooth communication. I'm also going to be using KiCAD to actually create the schematic and design the PCB. With that out of the way, I'm going to jump straight into designing this. First, I imported the MCU symbol in KiCAD:
 
