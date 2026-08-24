@@ -22,7 +22,7 @@ Then, I added the crystal oscillators. This MCU is kind of weird in that it requ
 
 **Total Time Spent: 1 Hour**
 
-# August 14 - RF Hardware
+# August 14 - RF Hardware and USB-C
 
 Next up is the RF hardware. This is pretty new to me so I'm going to rely pretty heavily on the tutorial. STM's official application notes (AN5165) say to setup the RF hardware like this:
 
@@ -66,3 +66,30 @@ Since it is so low, I can get away with using an LDO voltage regulator. The spec
 <img width="535" height="318" alt="image" src="https://github.com/user-attachments/assets/8d33a1dd-dbbb-4a20-be26-3d3cc77b8c92" />
 
 **Total Time Spent: 1.97 Hours**
+
+# August 23 - UART, LED indicator
+
+Next I'm going to add some peripherals, specifically a UART header. This is pretty standard, I'm not going to go too overkill here. I'm using a socket because it's cleaner than pins:
+
+<img width="327" height="254" alt="image" src="https://github.com/user-attachments/assets/6f81be49-e0c1-4cd3-853e-7d30ae07d1b1" />
+<img width="800" height="737" alt="image" src="https://github.com/user-attachments/assets/3232c694-2003-4e47-ac63-dfb382758291" />
+
+I'm also going to add an LED power indicator. Normally I just hook this up to power, but the tutorial actually uses a timer channel to control it through PWM, which is something new to me. The tutorial uses the PA7 pin, I'm going to use PB9 instead because my schematic is kind of cluttered in the PA7 area:
+
+<img width="254" height="112" alt="image" src="https://github.com/user-attachments/assets/15ee6cec-81eb-48e5-b798-38b2b51c6d83" />
+
+For the LED, in order for it work properly I need around 220R, so I'm just going to change all the other 100R resistors to 220R as well to simplify the BOM.
+
+<img width="518" height="343" alt="image" src="https://github.com/user-attachments/assets/d7c65505-f622-4f54-bd47-1f4c6a8318d4" />
+
+The schematic itself is now complete, I just need to clean some stuff up. I added some labels and a title block, as well as fixing KiCAD's automatic annotations. Additionally I assigned 12.5p load caps to the LSE crystal (later changed to 13p as LCSC doesn't have 12.5p)
+
+<img width="1562" height="1083" alt="image" src="https://github.com/user-attachments/assets/3cee5d4a-69fc-4607-a442-660416815821" />
+
+I then went ahead and assigned footprints to all of my symbols. I also just removed the series resistors for the crystals. One thing I did decide on doing was to change the LDO to a cheaper version (TI TLV70033DDCR). I also updated my symbol fields to include the links to all the parts that I will be using to make ordering them easier (this took up the majority of the time).
+
+<img width="599" height="832" alt="image" src="https://github.com/user-attachments/assets/63e783b4-734c-462b-9f07-81d613a3c355" />
+
+I also added some net classes, and that basically finishes the entire schematic.
+
+**Total Time Spent: 2.833 Hours**
