@@ -93,3 +93,17 @@ I then went ahead and assigned footprints to all of my symbols. I also just remo
 I also added some net classes, and that basically finishes the entire schematic.
 
 **Total Time Spent: 2.833 Hours**
+
+# August 24 - Starting the PCB
+
+I'm finally going to start actually designing the PCB. First, I need to do some basic setup. Obviously, this is going to be a 4-layer board (that's literally the reason I'm doing this), and since I'm using RF hardware I also need to make it impedance controlled. I did this by checking the box for it in KiCAD. I also changed the layer thickness and material according to JLCPCB's specs:
+
+<img width="793" height="474" alt="image" src="https://github.com/user-attachments/assets/a7d2d4e5-e665-4f11-82e3-490fd05e5237" />
+
+I also updated the design rule constraints based off of what JLCPCB allows:
+
+<img width="379" height="587" alt="image" src="https://github.com/user-attachments/assets/f24392fa-1653-424b-98a1-bd17f09991da" />
+
+I spent a lot of time after trying to figure out impedance, but it's late so I'll do that later.
+
+**Total Time Spent: 0.66 Hours**
