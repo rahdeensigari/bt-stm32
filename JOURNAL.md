@@ -107,3 +107,16 @@ I also updated the design rule constraints based off of what JLCPCB allows:
 I spent a lot of time after trying to figure out impedance, but it's late so I'll do that later.
 
 **Total Time Spent: 0.66 Hours**
+
+# August 25 - Impedance Research
+
+I did some [research](https://www.youtube.com/watch?v=0fteCxn5XXA) on impedance so I can find out how to actually calculate the right impedance trace width for this board. From that video, I calculated that I'm going to need a trace width of 0.3586mm. I did this by using [JLCPCB's impedance calculator](https://jlcpcb.com/pcb-impedance-calculator), which greatly simplifies the process of calculating impedance as they have all the dielectric constant of their different board stack-ups built-in. For some reason, the main stack-up type they use is the last option on the calculator, which kind of confused me at first. I also calculated the impedance of the USB differential pair, which, with a target resistance of 90R and spacing of 0.15mm, turned out to be 0.2474mm. I then proceeded to add these as predefined track sizes, along with all the other predefined values that were added from the video, before adding all of my components to the PCB editor:
+
+<img width="782" height="189" alt="image" src="https://github.com/user-attachments/assets/73be1a11-5d5c-4d65-a010-832eab15214c" />
+<img width="537" height="566" alt="image" src="https://github.com/user-attachments/assets/cca86276-897b-4ba0-aec7-909ed7f29faf" />
+
+First thing I did was go into my schematic and add some netlabels in places where I had forgotten them, pretty straightforward. I also didn't have a lot of the 3D models for the components so I went ahead and added all of the ones I didn't have. For the USB-C model, the specific one that I'm going to use doesn't have a STEP model available, so I had to use one of KiCAD's built in ones that didn't quite match but is good enough for this purpose for me to not care.
+
+<img width="684" height="447" alt="image" src="https://github.com/user-attachments/assets/f7847cdd-c02d-4ad3-9d07-db13ba01a64c" />
+
+**Total Time Spent: 0.817 Hours**
