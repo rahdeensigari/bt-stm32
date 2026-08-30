@@ -108,7 +108,7 @@ I spent a lot of time after trying to figure out impedance, but it's late so I'l
 
 **Total Time Spent: 0.66 Hours**
 
-# August 25 - Impedance Research
+# August 25 - Impedance Research + PCB
 
 I did some [research](https://www.youtube.com/watch?v=0fteCxn5XXA) on impedance so I can find out how to actually calculate the right impedance trace width for this board. From that video, I calculated that I'm going to need a trace width of 0.3586mm. I did this by using [JLCPCB's impedance calculator](https://jlcpcb.com/pcb-impedance-calculator), which greatly simplifies the process of calculating impedance as they have all the dielectric constant of their different board stack-ups built-in. For some reason, the main stack-up type they use is the last option on the calculator, which kind of confused me at first. I also calculated the impedance of the USB differential pair, which, with a target resistance of 90R and spacing of 0.15mm, turned out to be 0.2474mm. I then proceeded to add these as predefined track sizes, along with all the other predefined values that were added from the video, before adding all of my components to the PCB editor:
 
@@ -120,3 +120,37 @@ First thing I did was go into my schematic and add some netlabels in places wher
 <img width="684" height="447" alt="image" src="https://github.com/user-attachments/assets/f7847cdd-c02d-4ad3-9d07-db13ba01a64c" />
 
 **Total Time Spent: 0.817 Hours**
+
+# Continued PCB
+
+The first thing I did was add colors to my net classes to help me during laying out/doing traces on the PCB.
+
+<img width="1104" height="954" alt="image" src="https://github.com/user-attachments/assets/73ba3df0-7000-4d12-a00a-c986964975cc" />
+
+For the actual layout of the PCB, I'm trying a different approach that was used in the video, and that's to first create a very rough layout of the major components and build from there. Before what I did was try to spread out from the MCU to the rest of the board, but this approach feels like I'm planning the entire layout of the board better. The board is going be very long compared to its width, with the USB connector on one side and the RF antenna on the other. I'm kind of just placing stuff both where the video says to place it and where I think it would fit the best.
+
+I originally had the SWD socket lined up vertically like how the video did it with tag connects:
+
+<img width="953" height="478" alt="image" src="https://github.com/user-attachments/assets/ef2e856d-850f-442a-8780-3540458da25a" />
+
+However, after adding the ESD protection on the USB port, I realized that drawing the traces around the socket wouldn't be optimal, so I just moved it down horizontally aligned with the UART socket:
+
+<img width="1122" height="823" alt="image" src="https://github.com/user-attachments/assets/5cdbe729-480b-466c-a6e2-bf99026965d6" />
+
+A good workflow that I'm finding effective is to do the thing where you layout all the major components first, but I'm also cleaning up component placements in relation to each other while I'm creating the initial layout. (RF):
+
+<img width="678" height="780" alt="image" src="https://github.com/user-attachments/assets/0544e429-e2db-4e2f-88f7-b555653e719e" />
+
+Load caps for the LSE crystal. I might change the orientation of the GND pins on the resistors later:
+
+<img width="833" height="411" alt="image" src="https://github.com/user-attachments/assets/c96fb2a4-e146-4756-bafd-9b05f475b9b2" />
+
+I also realized that I had gotten a couple of caps (C13, C15) wrong in the BOM while I was laying out the components for SMPS:
+
+<img width="613" height="486" alt="image" src="https://github.com/user-attachments/assets/9bb58b80-7b42-42b7-8d8d-6e521f5534c1" />
+
+That's all the important components done, I'll move on to decoupling caps in my next session.
+
+<img width="1089" height="531" alt="image" src="https://github.com/user-attachments/assets/3db33d6a-7742-42f2-873e-93337ec0ff3f" />
+
+**Total Time Spent: 1.7 Hours**
