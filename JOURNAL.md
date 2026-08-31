@@ -121,7 +121,7 @@ First thing I did was go into my schematic and add some netlabels in places wher
 
 **Total Time Spent: 0.817 Hours**
 
-# Continued PCB
+# Continued PCB - Component Layout
 
 The first thing I did was add colors to my net classes to help me during laying out/doing traces on the PCB.
 
@@ -154,3 +154,55 @@ That's all the important components done, I'll move on to decoupling caps in my 
 <img width="1089" height="531" alt="image" src="https://github.com/user-attachments/assets/3db33d6a-7742-42f2-873e-93337ec0ff3f" />
 
 **Total Time Spent: 1.7 Hours**
+
+# Continued PCB - Smaller Components
+
+I'm going to start today by placing the decoupling capacitors. I normally do these first, but the video is demanding for them to be done after all the major components have already been laid out. The goal with decoupling capacitors is to have them as close to the MCU as possible, as the less trace between the pins means there's going to be less inductance and noise. I tried to do these myself then go back to the video to see the optimal way to place it. One especially difficult part to place capacitors were pins 34 and 35, which was near the SMPS components. I had to place both of them vertically and shift the SMPS components over slightly in order to make it work. I also had one extra capacitor that the video left out (C6):
+
+<img width="788" height="620" alt="image" src="https://github.com/user-attachments/assets/5f4bdcbc-177a-4b56-abab-8d1fc8792ca5" />
+
+At first I thought this would work fine, but then I realized that I would also need a bulk decoupling capacitor for C4. I unfortunately could not figure out how to place them so I did have to resort to seeing what the video did, which was to route the smaller caps in parallel with the bulk decoupling cap at the end:
+
+<img width="602" height="429" alt="image" src="https://github.com/user-attachments/assets/af664ab2-ae90-42db-bd97-adfd67f5938b" />
+
+Everything else was really straightforward, here are the decoupling caps with my placements:
+
+<img width="1101" height="1062" alt="image" src="https://github.com/user-attachments/assets/40bae7c3-cf9c-4279-96dc-158b93a49a2d" />
+
+One note, for some reason the video didn't add the second bulk decoupling cap yet, which I added with my other caps. I'm not sure as to why he didn't do this, but I'm guessing it is because it's less important. After looking at what he did, pretty much everything else was the same, except for one of the decoupling caps near the bottom being moved a bit further up to allow the crystal to be closer to the MCU, which I implemented as well:
+
+<img width="1012" height="759" alt="image" src="https://github.com/user-attachments/assets/fe3c00e5-33a7-44a5-9c90-7aca68c3ecde" />
+
+(Note: He did add it later as well)
+
+Next up, I did the LDO regulator. I tried it myself and I got something like this, with the IC right above the ESC protection and the capacitors around the LDO regulator:
+
+<img width="788" height="959" alt="image" src="https://github.com/user-attachments/assets/e7a388dc-6bb8-44aa-aada-c80b888bdea9" />
+
+The more optimal design however is to move the LDO regulator below the ESD protector and rotate it 90 degrees like this. This fills in a perfectly shaped dead space near the bottom of my PCB:
+
+<img width="657" height="608" alt="image" src="https://github.com/user-attachments/assets/ad3ecc7e-61e9-40ab-999c-49033ee10ad8" />
+
+Then I added the CC1 and CC2 pulldown resistors, not much to say here, these are pretty straightforward. I just have them parallel to the connector so they look better and so it's easier to route:
+
+<img width="412" height="543" alt="image" src="https://github.com/user-attachments/assets/5a0da47c-8240-4158-828f-727cb7d5581c" />
+
+NRST capacitor. Again, this is pretty simple. I just had to keep in mind how it would be connected from the MCU to the SWD socket:
+
+<img width="799" height="707" alt="image" src="https://github.com/user-attachments/assets/6e10f072-295a-4b52-8b1c-cdbd081f6dee" />
+
+Next was the LED, and it turns out that my current pinout made routing it a pain, as the traces had to pass through all of the LSE/UART components to actually get to the LED. Instead, I changed the pin from PB9 to PA7, which made the routing a whole lot easier:
+
+<img width="136" height="294" alt="image" src="https://github.com/user-attachments/assets/7eb07d25-0b4c-48a3-a259-0ec514156ccb" />
+
+Last for the layout, I added the boot switch. I decided to place this in a dead space near the far bottom right of the PCB. Again, not really anything notable, I just added the resistors and caps:
+
+<img width="439" height="397" alt="image" src="https://github.com/user-attachments/assets/dd2d7cfd-fa5f-44d7-87ac-8a84ae362fe3" />
+
+With that though, the layout is complete:
+
+<img width="947" height="502" alt="image" src="https://github.com/user-attachments/assets/e09ee5ba-ce87-4dcf-b776-7f4902b87b4d" />
+<img width="677" height="365" alt="image" src="https://github.com/user-attachments/assets/1f9845a9-00b2-4c27-92ad-0a7ddd7b55ca" />
+
+**Total Time Spent: 2.033 Hours**
+
