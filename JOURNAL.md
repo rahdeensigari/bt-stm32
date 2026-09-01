@@ -155,7 +155,7 @@ That's all the important components done, I'll move on to decoupling caps in my 
 
 **Total Time Spent: 1.7 Hours**
 
-# Continued PCB - Smaller Components
+# Continued PCB - Smaller Components and Finished Layout
 
 I'm going to start today by placing the decoupling capacitors. I normally do these first, but the video is demanding for them to be done after all the major components have already been laid out. The goal with decoupling capacitors is to have them as close to the MCU as possible, as the less trace between the pins means there's going to be less inductance and noise. I tried to do these myself then go back to the video to see the optimal way to place it. One especially difficult part to place capacitors were pins 34 and 35, which was near the SMPS components. I had to place both of them vertically and shift the SMPS components over slightly in order to make it work. I also had one extra capacitor that the video left out (C6):
 
@@ -181,7 +181,7 @@ Next up, I did the LDO regulator. I tried it myself and I got something like thi
 
 The more optimal design however is to move the LDO regulator below the ESD protector and rotate it 90 degrees like this. This fills in a perfectly shaped dead space near the bottom of my PCB:
 
-<img width="657" height="608" alt="image" src="https://github.com/user-attachments/assets/ad3ecc7e-61e9-40ab-999c-49033ee10ad8" />
+<img width="657" height="608" alt="image" src="https://github.com/user-attachments/assets/ad3ecc7e-61e9-40ab-999c-49033ee10ad8" /> 
 
 Then I added the CC1 and CC2 pulldown resistors, not much to say here, these are pretty straightforward. I just have them parallel to the connector so they look better and so it's easier to route:
 
@@ -205,4 +205,27 @@ With that though, the layout is complete:
 <img width="677" height="365" alt="image" src="https://github.com/user-attachments/assets/1f9845a9-00b2-4c27-92ad-0a7ddd7b55ca" />
 
 **Total Time Spent: 2.033 Hours**
+
+# Continued PCB - Board Outline, Mounting Holes, Fiducial Markers
+
+First thing I did today was the board outline. This was really simple, I just defined a basic outline that I can change later on if I need to:
+
+<img width="827" height="537" alt="image" src="https://github.com/user-attachments/assets/3c0770fe-ef1d-4397-8c2a-1494136bc158" />
+
+I also added my author indicator:
+
+<img width="895" height="565" alt="image" src="https://github.com/user-attachments/assets/1ef3e52e-9d78-46a4-926f-18408d869c47" />
+
+After that, I was ready to move on to routing. The stack up that the video uses is SIGNAL - GND - GND - SIGNAL but this isn't the standard, so I want to try using SIGNAL - GND - POWER - SIGNAL instead.
+
+<img width="939" height="587" alt="image" src="https://github.com/user-attachments/assets/34940f70-370b-4ad0-8b52-5bc7b5397a18" />
+<img width="887" height="574" alt="image" src="https://github.com/user-attachments/assets/f83cf796-d3ce-40dc-89af-56db8d73f4c0" />
+
+Next, I added some mounting holes and fiducial markers in my schematic then laid them out on my PCB. For some reason, the video is tying the mounting holes to ground, which I don't think is necessary but I'll follow along. Also note that because this is a demo board I do not care at all about where I place these:
+
+<img width="617" height="318" alt="image" src="https://github.com/user-attachments/assets/02325b27-b2f7-4170-ad02-495a350b14a1" />
+<img width="930" height="696" alt="image" src="https://github.com/user-attachments/assets/b6c12dd6-10cc-4290-81c1-1152d2bdd07c" />
+
+**Total Time Spent: 0.583 Hours**
+
 
