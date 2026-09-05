@@ -121,7 +121,7 @@ First thing I did was go into my schematic and add some netlabels in places wher
 
 **Total Time Spent: 0.817 Hours**
 
-# Continued PCB - Component Layout
+# August 29 - Component Layout
 
 The first thing I did was add colors to my net classes to help me during laying out/doing traces on the PCB.
 
@@ -155,7 +155,7 @@ That's all the important components done, I'll move on to decoupling caps in my 
 
 **Total Time Spent: 1.7 Hours**
 
-# Continued PCB - Smaller Components and Finished Layout
+# August 30 - Smaller Components and Finished Layout
 
 I'm going to start today by placing the decoupling capacitors. I normally do these first, but the video is demanding for them to be done after all the major components have already been laid out. The goal with decoupling capacitors is to have them as close to the MCU as possible, as the less trace between the pins means there's going to be less inductance and noise. I tried to do these myself then go back to the video to see the optimal way to place it. One especially difficult part to place capacitors were pins 34 and 35, which was near the SMPS components. I had to place both of them vertically and shift the SMPS components over slightly in order to make it work. I also had one extra capacitor that the video left out (C6):
 
@@ -206,7 +206,7 @@ With that though, the layout is complete:
 
 **Total Time Spent: 2.033 Hours**
 
-# Continued PCB - Board Outline, Mounting Holes, Fiducial Markers
+# August 31 - Board Outline, Mounting Holes, Fiducial Markers
 
 First thing I did today was the board outline. This was really simple, I just defined a basic outline that I can change later on if I need to:
 
@@ -227,5 +227,36 @@ Next, I added some mounting holes and fiducial markers in my schematic then laid
 <img width="930" height="696" alt="image" src="https://github.com/user-attachments/assets/b6c12dd6-10cc-4290-81c1-1152d2bdd07c" />
 
 **Total Time Spent: 0.583 Hours**
+
+# September 4 - Designators and Traces
+
+I started traces. The workflow that the video says to use is to do vias first. Before I started traces though, I wanted to clean up the component indicators, as most actual professional PCBs do not include designators for every single component. Additionally, I have no plans to hand solder this board, so the indicators aren't really helping me either. Instead, I decided to keep only the ones that I deemed important:
+
+<img width="1586" height="1020" alt="image" src="https://github.com/user-attachments/assets/a567b5c1-68de-4c35-8fd9-aec371d04811" />
+
+With the majority of the designators out of the way, I could re-place some of my components to make the board more uniform, and also add some extra silkscreen notes to important components. The reason I'm doing this first is so I know where I can't place vias. With these changes, I also actually have room for 4 mounting holes now:
+
+<img width="1593" height="962" alt="image" src="https://github.com/user-attachments/assets/1adff101-bbe3-44d4-b98c-91126ca4bbda" />
+
+As mentioned before, I started with vias. One thing I struggled with was figuring out how to copy and paste the same trace length between different pads and actually get the end of the trace to snap to other pad. I figured out after a bit of research that I needed to set object snapping to all layers for it to actually work. After I figured that out though it was pretty straightforward. I connected the traces for all of the components that only needed one via but left the vias that needed fill zones unconnected for now:
+
+<img width="1664" height="1022" alt="image" src="https://github.com/user-attachments/assets/3dcf8211-dd0d-44ff-8f0a-775919a5eefa" />
+
+I also went ahead and did the same thing for 3v3:
+
+<img width="1764" height="1106" alt="image" src="https://github.com/user-attachments/assets/469a41ff-0552-4493-9bd0-f5486a768ffd" />
+
+Now I can move on to actual routing. I started with the RF traces. These were pretty straightforward, but one thing that I'm kind of uncertain of is that I need to have a smaller trace at the actual pin on the STM32 going up to a wider trace (impedance), which I don't really like:
+
+<img width="1095" height="486" alt="image" src="https://github.com/user-attachments/assets/0e071d96-ba2f-404b-8c7e-0d703aae20d3" />
+<img width="246" height="150" alt="image" src="https://github.com/user-attachments/assets/7394b048-46c6-4552-8969-2d43a4fc3473" />
+
+After the RF traces, I did the crystal routing. There was nothing really noteworthy to talk about here, except for the fact that I did have to move some of the capacitors on the LSE crystal to make routing a little bit easier:
+
+<img width="1815" height="1073" alt="image" src="https://github.com/user-attachments/assets/5ea463a5-781b-4912-94a2-a49bbe56fd8b" />
+
+The big thing I realized though was how stupid of a decision it was to do SIGNAL - GND - POWER - SIGNAL for this board. Because of this, I'm probably going to switch to SIGNAL - GND - GND - SINGAL tommorow.
+
+**Total Time Spent: 1.6 hours**
 
 
