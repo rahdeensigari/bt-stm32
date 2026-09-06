@@ -259,4 +259,27 @@ The big thing I realized though was how stupid of a decision it was to do SIGNAL
 
 **Total Time Spent: 1.6 hours**
 
+# September 5 - Fixed Stackup, More Traces
 
+As mentioned yesterday, my old stackup was not optimal at all. Because of this, I'm going to change it to SIGNAL - GND - GND - SINGAL. This was a pretty easy fix.
+
+After the crystal routing, I did SMPS. Again, pretty straightforward. An interesting thing I noticed was to start with the largest possible trace width (so 0.25mm) then scale up to a larger width like 0.5mm to reduce impedance.
+
+<img width="905" height="977" alt="image" src="https://github.com/user-attachments/assets/5753761d-455f-4577-a5ef-5cc8097bac0b" />
+
+Next is the SWD traces, and these are just a pain. I faced a couple of problems when trying to route these:
+
+1. The USB differential pair pads are right next to the SWD pads.
+2. There are two sets of decoupling capacitors above and below the SWD pads.
+3. The actual socket is very far away, and there are a lot of components blocking the path to it.
+4. I wanted to impedance match the traces.
+
+Although I don't have any screenshots of it, I did actually try to move the socket up to the top of the PCB, but this only made it harder to route everything. While I had it moved to the top, I realized I actually messed up the order of the pins, and changed it to what the standard order should be:
+
+<img width="569" height="206" alt="image" src="https://github.com/user-attachments/assets/b6c2abdf-15bc-4d40-b621-0891307326a8" />
+
+Eventually, I moved the socket back down and tried routing the traces through the bottom layer with vias instead. So far this seems to work fine. I decided that I'm going to ignore impedance matching for this, as it is not necessary for SWD to the level that it is necessary for RF traces. It's late, so I'll continue this tommorow:
+
+<img width="842" height="898" alt="image" src="https://github.com/user-attachments/assets/19b72aec-1367-46a8-a030-c4fdc9c26789" />
+
+**Total Time Spent: 1.33 Hours**
