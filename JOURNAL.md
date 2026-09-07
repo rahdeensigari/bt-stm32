@@ -255,7 +255,7 @@ After the RF traces, I did the crystal routing. There was nothing really notewor
 
 <img width="1815" height="1073" alt="image" src="https://github.com/user-attachments/assets/5ea463a5-781b-4912-94a2-a49bbe56fd8b" />
 
-The big thing I realized though was how stupid of a decision it was to do SIGNAL - GND - POWER - SIGNAL for this board. Because of this, I'm probably going to switch to SIGNAL - GND - GND - SINGAL tommorow.
+The big thing I realized though was how stupid of a decision it was to do SIGNAL - GND - POWER - SIGNAL for this board. Because of this, I'm probably going to switch to SIGNAL - GND - GND - SINGAL tomorrow.
 
 **Total Time Spent: 1.6 hours**
 
@@ -283,3 +283,46 @@ Eventually, I moved the socket back down and tried routing the traces through th
 <img width="842" height="898" alt="image" src="https://github.com/user-attachments/assets/19b72aec-1367-46a8-a030-c4fdc9c26789" />
 
 **Total Time Spent: 1.33 Hours**
+
+# September 6 - Continued Routing Traces
+
+I started today by finishing the SWD traces. I didn't need to do any of the stuff with vias for the other traces, but I might have to change some of them if there is interference with other routing:
+
+<img width="968" height="834" alt="image" src="https://github.com/user-attachments/assets/8476a1f1-f26d-46f2-93c9-e7c7e8cac515" />
+
+Next, I went ahead and did the USB differential pairs. These aren't perfectly differential (I changed some parts of the traces to make it neat), but for short lengths like these, it really doesn't matter too much:
+
+<img width="1583" height="573" alt="image" src="https://github.com/user-attachments/assets/c62670bf-3ecc-4388-b48f-759314dbcdc0" />
+
+That's all the critical traces done. With those out of the way, I can move on to the more low priority stuff. First, I routed the BOOT0 pins. These were really annoying to route. First, to even break it out from the MCU, I had to shift the LSE over, as in its current position it was blocking the BOOT0 pin from being broken out. Then, the next problem was that the NRST trace was blocking the BOOT0 trace. To fix this, I had to use a via to route the trace to the bottom layer and another via to bring it back up. I also connected the capacitors and resistors with a copper pour:
+
+<img width="1543" height="525" alt="image" src="https://github.com/user-attachments/assets/943d58c6-58c7-420e-8d52-341f5c17250f" />
+
+Then, I routed a couple of the easier traces, for example LED and UART. Nothing really notable to state for these, they were pretty straightforward:
+
+<img width="406" height="854" alt="image" src="https://github.com/user-attachments/assets/31b7bb64-b4cb-43f7-a01c-826de41b962e" />
+
+I also added some ground return vias to the BOOT0 vias:
+
+<img width="587" height="426" alt="image" src="https://github.com/user-attachments/assets/83d91168-47c8-4c6a-965f-deff1af6b43d" />
+
+I also routed the CC connections on the USB header. Although not necessary, I did take some care to make the traces equal length:
+
+<img width="205" height="544" alt="image" src="https://github.com/user-attachments/assets/24e5cdb0-11fd-4294-ba44-02b81cb21f9b" />
+
+That's actually all of the signal connections done, now all that's left are the power and ground connections. First, I started with the VBUS traces. I did have to remove the via on the top GND pad on the LDO regulator:
+
+<img width="657" height="825" alt="image" src="https://github.com/user-attachments/assets/afce1f37-26b8-4201-9fad-c01b2424968b" />
+
+Then I worked on routing 3v3. The way I'm going to do this is by using a copper pour on the bottom layer connecting all the vias together, then individual copper pours connecting the 3v3 vias together:
+
+<img width="456" height="251" alt="image" src="https://github.com/user-attachments/assets/721e9a10-58ab-4717-b14a-1da46ae0b3c0" />
+<img width="1702" height="1066" alt="image" src="https://github.com/user-attachments/assets/4eceb8a3-8a80-4a74-adf4-10f8bfad174d" />
+
+I also did a similar thing with the GND pads using the two middle copper pour layers:
+
+<img width="756" height="356" alt="image" src="https://github.com/user-attachments/assets/4058e807-947b-44b3-95ce-ce91e4ca7e90" />
+
+**Total Time Spent: 1.94 Hours**
+
+
