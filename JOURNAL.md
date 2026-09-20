@@ -325,4 +325,102 @@ I also did a similar thing with the GND pads using the two middle copper pour la
 
 **Total Time Spent: 1.94 Hours**
 
+# September 19 - Finished PCB!
 
+The first thing I did was finish the 3v3 pours:
+
+<img width="597" height="302" alt="image" src="https://github.com/user-attachments/assets/003d8c53-a7cd-4475-9265-276950bf0e42" />
+<img width="648" height="935" alt="image" src="https://github.com/user-attachments/assets/4a56618b-850e-4958-a5fe-d91f7012d9f8" />
+<img width="740" height="379" alt="image" src="https://github.com/user-attachments/assets/389bdd42-0fed-4fde-969a-520784b9c8b7" />
+
+With that done, I'm actually going to take a different approach do doing the GND connections. Instead of individual pours like I did with 3v3, I'm just going to fill the entire top layer with a GND pour that connects all of the GND vias to each other. To do this, I first deleted all the existing pours and connections that I had before:
+
+<img width="1440" height="890" alt="image" src="https://github.com/user-attachments/assets/a0aa85ca-2231-43b0-b27d-aa2eff271eb5" />
+
+Then I added the actual GND pour to the GND plane:
+
+<img width="1333" height="839" alt="image" src="https://github.com/user-attachments/assets/4641e459-ed22-4de0-be1b-4f386c5e875d" />
+
+This was a pain, and it's not quite perfect, so let me go over what took so long for this. First of all, I had to change the position of most of the GND vias, because they were only partially in the pour zones. This was easy enough, it just took a bit. The main difficulty though was the RF section, because having more copper around it changes the impedance. The best way to fix this is by adding clearance around the RF section, specifically 3x the thickness of the dielectric layers, which was 0.6mm for me. What took me so long was figuring out how to do this, because the video changes the clearance of the entire GND pour, but since he was using PCBWay, the dielectric layers were thinner, allowing him to use less clearance. 0.6mm of clearance around the entire board is just not acceptable, so I spent a long time figuring out how to actually do this. My initial thought was a keep out zone, but this just prevented me from connecting the vias effectively. Eventually, I decided on adding a custom rule area then defining a 0.6mm clearance for anything in that area. (Credit to Claude for figuring this out):
+
+<img width="1227" height="653" alt="image" src="https://github.com/user-attachments/assets/0ec5a0c2-685e-41b7-95d1-e3333614dc47" />
+<img width="534" height="157" alt="image" src="https://github.com/user-attachments/assets/bf36c191-b95d-44b1-8959-f18b9a9f7874" />
+
+Next, since I have 3 GND planes, I'm going to add some via stitching to minimize impedance across all of the planes. Using this formula:
+
+<img width="170" height="89" alt="image" src="https://github.com/user-attachments/assets/3d30672c-8594-483d-a322-5deee7430790" />
+
+I calculated the ideal spacing for my vias, which was around 3mm:
+
+<img width="790" height="432" alt="image" src="https://github.com/user-attachments/assets/036a7398-7ff5-40bb-8644-88fdeb72c96a" />
+
+With that value, I added stitching vias throughout the entire board:
+
+<img width="1788" height="1099" alt="image" src="https://github.com/user-attachments/assets/40df0ce6-98b5-4693-acd4-573dc48864a8" />
+
+The PCB is pretty much done now. I added teardrops to all of the pads/traces. I might remove this later, but they're pretty beneficial for now:
+
+<img width="1005" height="889" alt="image" src="https://github.com/user-attachments/assets/4d0ab77c-a23f-4f33-9d3d-6347f5df30a7" />
+
+I also cleaned up unused vias/pads.
+
+Next was DRC. Initially I was getting this error:
+
+<img width="588" height="303" alt="image" src="https://github.com/user-attachments/assets/35464e78-ce4e-49a0-9e6c-f9508418018b" />
+
+But after checking JLCPCB's capabilities and changing the constraint in the board settings, it fixed itself. All the other errors were just weird track clearances and pretty straightforward to fix, with a couple exceptions.
+
+The first one was this clearance error between two parts of the USB-C footprint:
+
+<img width="544" height="272" alt="image" src="https://github.com/user-attachments/assets/4429079a-4956-4f33-97da-924165da220f" />
+
+I fixed this by changing the size of the pads on the footprint:
+
+<img width="712" height="399" alt="image" src="https://github.com/user-attachments/assets/0346a014-b365-45b2-9742-9134df0ce99b" />
+
+It also turns out that the RF_Clearance thing from earlier didn't quite work, instead I removed it and replaced it with a secondary GND pour that had higher clearance and priority. The unfortunate thing is that there are some minor gaps in the copper pour now, but they're so small that I don't care:
+
+<img width="820" height="782" alt="image" src="https://github.com/user-attachments/assets/f6f290c5-fcdd-40c1-ad7f-672151d137c4" />
+
+The next error was that there weren't enough spokes on some of the thermal reliefs throughout the board. I fixed this with a mix of adding traces, keep out zones, and extra GND fills:
+
+<img width="400" height="365" alt="image" src="https://github.com/user-attachments/assets/9ca11340-8ce9-4bb5-b4c8-70416b6330ab" />
+<img width="547" height="603" alt="image" src="https://github.com/user-attachments/assets/8f94800c-e75e-4a1f-ae22-45c775b14798" />
+
+I also had a really weird error where the GND plane wasn't connected to itself, but it kind of just fixed itself. I think the reason why was because I got rid of a piece of ground pour that was sitting under a trace not connected to anything.
+
+There were a couple warnings but nothing major, but after that I'm basically done with the entire PCB:
+
+<img width="1614" height="981" alt="image" src="https://github.com/user-attachments/assets/1af87fa4-f0bb-4307-969b-7c5dafeb4db6" />
+<img width="765" height="436" alt="image" src="https://github.com/user-attachments/assets/386213a3-1243-46c1-a795-755b737d59e9" />
+
+To prepare my project for submission and manufacturing, I did the following:
+- Exported the BOM and added it to [the production folder](/prod).
+- Used the JLCPCB fabrication toolkit to export the other files and added them to [the production folder](/prod).
+- Ran through JLCPCB to see the price
+
+After running the board through JLCPCB, the price of everything would be over $100. Because of this, I'm going to SMD solder this by hand, it's something I should learn how to do anyways.
+
+Big gap in the time spent in this entry here, but I basically just created orders in JLCPCB and LCSC for the components and updated the repo with the necessary items I need to get the project approved. This was insanely boring.
+
+Before I submit this project, I want to create some basic firmware. I first generated the initial code with STM32CubeMX, then setup VSCode to work as STM32CubeIDE. This took a while to figure out, and I didn't really during this time, so excuse me for the poor documentation here. I had to research how to setup the STM32CubeIDE extension on VSCode and cmake, and I had a lot of stupid problems that took a while to fix (for example, I didn't see a button on the bottom right to install the necessary dependencies and was stuck trying to figure out why the extension wasn't working). I also had a problem once everything was setup where I was getting a lot of seemingly random errors, it turned out I just had to rebuild my project and everything worked fine. In case you can't tell, programming is not my strong suit. My actual code is just going to be a simple LED blink for now, but I will change this later if I need to, for now I just want to make sure the board won't exploded on me. I pushed the code to the firmware folder in the repo, but it was pretty straightforward, here is a simplification of it:
+
+```c
+const uint16_t LED_PORT = GPIOA;
+const uint16_t LED_PIN = GPIO_PIN_7;
+
+// ...
+
+while (1)
+  {
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+    HAL_GPIO_TogglePin(LED_PORT, LED_PIN);
+    HAL_Delay(500);
+  }
+```
+
+After that, I added some more to my README and uploaded the actual PCB files which I forgot to do earlier. With that, I'm essentially done with the project!
+
+**Total Time Spent: 6.97 Hours**
