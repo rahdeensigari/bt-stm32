@@ -424,3 +424,10 @@ while (1)
 After that, I added some more to my README and uploaded the actual PCB files which I forgot to do earlier. With that, I'm essentially done with the project!
 
 **Total Time Spent: 6.97 Hours**
+
+# Reviewer Note:
+
+Hey, thanks for looking at my project! Some clarification: this PCB was made for practice, not for any use in particular (though I will probably find one), that's why there's not an enclosure or anything for it, because I literally have nothing to enclose it for. The BOM is in the production folder, it's just a part list however, the rough costs are in the README. The firmware currently does not do anything related to RF, it literally just blinks the onboard LED. Again, as mentioned earlier, I don't currently have a use for this board, but as soon as I find will I will of course update this repo to fit. Thanks!
+<img width="0" height="0" alt="image" src="https://github.com/user-attachments/assets/117ee9ea-2df5-462a-9bae-4c9699ab794d" />
+
+**# Total Time Spent: 0 Hours**
