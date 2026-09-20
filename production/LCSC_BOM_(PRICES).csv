@@ -1,0 +1,23 @@
+﻿Index,LCSC#,MPN,Manufacturer,Package,Customer #,Description,RoHS,Quantity,MOQ,Multiple,Unit Price($),Extended Price($),Product Link
+1,C184029,LQW15AN10NJ00D,muRata,0402,,500mA 10nH ±5% 170mΩ Unshielded Inductor 0402 Fixed Inductors RoHS,yes,20,20,20,0.0420,0.84,https://www.lcsc.com/product-detail/C184029.html
+2,C843260,NX2016SA-32MHZ-STD-CZS-5,NDK,SMD2016-4P,,"SMD2016-4P Crystals ",yes,5,5,5,0.3534,1.77,https://www.lcsc.com/product-detail/C843260.html
+3,C54930595,NXPC32.768KAE125F-BT-5,NSK,SMD2012,,"±20ppm 12.5pF ±20ppm SMD2012 Crystals ",yes,1,1,1,0.4317,0.43,https://www.lcsc.com/product-detail/C54930595.html
+4,C911135,STM32WB55CEU6,ST,UFQFPN-48(7x7),,ARM Cortex-M4 32 Bit 1.71V~3.6V UFQFPN-48(7x7) RF Transceiver ICs RoHS,yes,1,1,1,8.5087,8.51,https://www.lcsc.com/product-detail/C911135.html
+5,C7519,USBLC6-2SC6,ST,SOT-23-6L,,17VC Clamp 5A Ipp ESD DIODE SOT-23-6L,yes,5,5,5,0.1782,0.89,https://www.lcsc.com/product-detail/C7519.html
+6,C11337,TLV70033DDCR,TI,SOT-23-5,,"3.3V Positive Fixed SOT-23-5 Voltage Regulators - Linear, Low Drop Out (LDO) Regulators RoHS",yes,5,5,5,0.1739,0.87,https://www.lcsc.com/product-detail/C11337.html
+7,C49234124,HX 3x4x2-2P-1.6N TACTILE SWITCH,hanxia,"SMD,4x3mm",,Tactile Switch SPST 160gf 2mm SMD (SMT) Tab 4mm x 3mm Surface Mount,yes,20,20,20,0.0240,0.48,https://www.lcsc.com/product-detail/C49234124.html
+8,C25091,0402WGF2200TCE,UNI-ROYAL,0402,,220Ω ±1% 62.5mW 0402 Thick Film Resistor,yes,100,100,100,0.0033,0.33,https://www.lcsc.com/product-detail/C25091.html
+9,C105872,RC0402FR-075K1L,YAGEO,0402,,5.1kΩ 62.5mW 50V Thick Film Resistor ±100ppm/℃ ±1% 0402 Chip Resistor - Surface Mount RoHS,yes,100,100,100,0.0026,0.26,https://www.lcsc.com/product-detail/C105872.html
+10,C77108,LQG15HS2N7S02D,muRata,0402,,800mA 2.7nH 150mΩ Multilayer inductor 0402 Fixed Inductors RoHS,yes,50,50,50,0.0216,1.08,https://www.lcsc.com/product-detail/C77108.html
+11,C963809,EBLS201209-100K,HYHONGYEX,0805,,15mA 10uH ±10% 1.15Ω Multilayer inductor 0805 Fixed Inductors RoHS,yes,20,20,20,0.0389,0.78,https://www.lcsc.com/product-detail/C963809.html
+12,C60474,CC0402KRX7R7BB104,YAGEO,0402,,100nF ±10% 16V Ceramic Capacitor X7R 0402,yes,100,100,100,0.0050,0.50,https://www.lcsc.com/product-detail/C60474.html
+13,C598199,U.FL-R-SMT-1(01),HRS,SMD,,Connector Receptacle IPEX Male Pin 50Ω Surface Mount,yes,1,1,1,3.4577,3.46,https://www.lcsc.com/product-detail/C598199.html
+14,C492398,PM127V-11-04P-H34,XFCN,"Through Hole,P=1.27mm",,Female Header 4 Position 1.27mm Pitch Single Row Through Hole -40℃~+105℃,yes,5,5,5,0.0988,0.49,https://www.lcsc.com/product-detail/C492398.html
+15,C22438072,HX PM1.27-1x6P ZC,hanxia,"Through Hole,P=1.27mm",,Female Header 6 Position 1.27mm Pitch Single Row Through Hole -40℃~+105℃,yes,5,5,5,0.1270,0.64,https://www.lcsc.com/product-detail/C22438072.html
+16,C2894897,HC-TYPE-C-16P-01A,HCTL,SMD,,"USB-C (USB TYPE-C) Receptacle Connector 16 Position Surface Mount, Right Angle",yes,5,5,5,0.0848,0.42,https://www.lcsc.com/product-detail/C2894897.html
+17,C531364,DLF162500LT-5028A1,TDK,"SMD-4P,1.6x0.8mm",,"50Ω 0.33dB SMD-4P,1.6x0.8mm RF Filters RoHS",yes,5,5,5,0.1252,0.63,https://www.lcsc.com/product-detail/C531364.html
+18,C21260817,YLED0402R,YONGYUTAI,0402,,Red 645nm LED Indication - Discrete 1.8V~2.4V 0402,yes,50,50,50,0.0134,0.67,https://www.lcsc.com/product-detail/C21260817.html
+19,C76909,GJM1555C1HR30WB01D,muRata,0402,,0.3pF 50V Ceramic Capacitor C0G 0402,yes,20,20,20,0.0421,0.84,https://www.lcsc.com/product-detail/C76909.html
+20,C88902,GJM1555C1HR80WB01D,muRata,0402,,0.8pF 50V Ceramic Capacitor C0G 0402,yes,20,20,20,0.0404,0.81,https://www.lcsc.com/product-detail/C88902.html
+21,C161306,GJM1555C1H130FB01D,muRata,0402,,13pF ±1% 50V Ceramic Capacitor C0G 0402,yes,10,10,10,0.0537,0.54,https://www.lcsc.com/product-detail/C161306.html
+22,C106200,CC0402JRNPO9BN101,YAGEO,0402,,100pF ±5% 50V Ceramic Capacitor NP0 0402,yes,100,100,100,0.0044,0.44,https://www.lcsc.com/product-detail/C106200.html
