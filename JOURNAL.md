@@ -395,8 +395,8 @@ There were a couple warnings but nothing major, but after that I'm basically don
 <img width="765" height="436" alt="image" src="https://github.com/user-attachments/assets/386213a3-1243-46c1-a795-755b737d59e9" />
 
 To prepare my project for submission and manufacturing, I did the following:
-- Exported the BOM and added it to [the production folder](/prod).
-- Used the JLCPCB fabrication toolkit to export the other files and added them to [the production folder](/prod).
+- Exported the BOM and added it to [the production folder](/production).
+- Used the JLCPCB fabrication toolkit to export the other files and added them to [the production folder](/production).
 - Ran through JLCPCB to see the price
 
 After running the board through JLCPCB, the price of everything would be over $100. Because of this, I'm going to SMD solder this by hand, it's something I should learn how to do anyways.
@@ -427,7 +427,7 @@ After that, I added some more to my README and uploaded the actual PCB files whi
 
 # Reviewer Note:
 
-Hey, thanks for looking at my project! Some clarification: this PCB was made for practice, not for any use in particular (though I will probably find one), that's why there's not an enclosure or anything for it, because I literally have nothing to enclose it for. The BOM is in the production folder, [LCSC_BOM.csv](prod/LCSC_BOM.csv) has the prices for the components. The firmware currently does not do anything related to RF, it literally just blinks the onboard LED. Again, as mentioned earlier, I don't currently have a use for this board, but as soon as I find will I will of course update this repo to fit. Thanks!
+Hey, thanks for looking at my project! Some clarification: this PCB was made for practice, not for any use in particular (though I will probably find one), that's why there's not an enclosure or anything for it, because I literally have nothing to enclose it for. The BOM is in the production folder, [LCSC_BOM.csv](production/LCSC_BOM.csv) has the prices for the components. The firmware currently does not do anything related to RF, it literally just blinks the onboard LED. Again, as mentioned earlier, I don't currently have a use for this board, but as soon as I find will I will of course update this repo to fit. Thanks!
 <img width="0" height="0" alt="image" src="https://github.com/user-attachments/assets/117ee9ea-2df5-462a-9bae-4c9699ab794d" />
 
 **Total Time Spent: 0 Hours**
