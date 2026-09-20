@@ -1,0 +1,8 @@
+build/
+mx.scratch
+!.settings
+*.elf
+*.bin
+*.hex
+*.map
+.vscode/
