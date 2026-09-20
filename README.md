@@ -7,6 +7,11 @@ An STM32 board with Bluetooth capabilities, made primarily for the sake of pract
 
 If you want to make this for whatever reason, I would HIGHLY recommend using an SMD stencil instead of JLCPCB's PCBA, the gerbers and the BOM are in the [production](/production) folder. You can also find the firmware, which is currently just a basic LED blink, in the [firmware](/firmware) folder, and the PCB files themselves in the [pcb](/pcb) folder.
 
+Some general cost estimates (USD):
+- PCB: $7.10
+- Stencil: $7.22
+- LCSC Components: $31.01
+
 If you want to use the RF capabilities, you will need an external antenna. Just search up female U.FL antenna and you will be able to find a lot of antennas that will work perfectly fine.
 
 *Submitted to Forge (Hackclub)*
